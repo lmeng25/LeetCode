@@ -15,14 +15,13 @@
  */
 class Solution {
     public int kthSmallest(TreeNode root, int k) {
-        PriorityQueue<Integer> q = new PriorityQueue();
+        List<Integer> q = new ArrayList();
         helper(root, q);
-        for (int i = 0; i < k - 1; i++)
-            q.poll();
-        return q.peek();
+        
+        return q.get(k - 1);
     }
     
-    private void helper(TreeNode root, PriorityQueue<Integer> q) {
+    private void helper(TreeNode root, List<Integer> q) {
         if (root != null) {
             helper(root.left, q);
             q.add(root.val);
