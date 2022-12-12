@@ -6,8 +6,7 @@ class Solution {
             map.put(num, map.getOrDefault(num, 0) + 1);
         }
         
-        PriorityQueue<Map.Entry<Integer, Integer>> queue = new PriorityQueue<>(Map.Entry.comparingByValue(Comparator.reverseOrder()));
-        
+        PriorityQueue<Map.Entry<Integer, Integer>> queue = new PriorityQueue<>(k, Map.Entry.comparingByValue(Comparator.reverseOrder()));
         for (Map.Entry<Integer, Integer> set : map.entrySet()) {
             queue.add(set);
         }
