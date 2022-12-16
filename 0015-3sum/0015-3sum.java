@@ -1,13 +1,20 @@
 class Solution {
     public List<List<Integer>> threeSum(int[] nums) {
+        // return list
         List<List<Integer>> res = new ArrayList<>();
+        
+        // sort the given array
         Arrays.sort(nums);
-        Integer num1 = nums[0] - 1, num2, num3;
+        
+        // first number
+        int num1 = nums[0] - 1;
         
         for (int i = 0; i < nums.length; i++) {
+            // check for dupulicate
             if (nums[i] != num1) {
                 Map<Integer, Integer> map = new HashMap<>();
                 
+                // find numbers pair == -nums[i]
                 int left = i + 1;
                 int right = nums.length - 1;
                 while (left < right) {
@@ -22,6 +29,7 @@ class Solution {
                         right--;
                 }
                 
+                // add to res
                 if (!map.isEmpty()) {
                     for (Map.Entry<Integer, Integer> set : map.entrySet()) {
                         List<Integer> list = new ArrayList<>();
@@ -32,6 +40,7 @@ class Solution {
                     }
                 }
             }
+            // update num1
             num1 = nums[i];
         }
         return res;
