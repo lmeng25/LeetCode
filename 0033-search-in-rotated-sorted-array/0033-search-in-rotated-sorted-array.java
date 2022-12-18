@@ -1,6 +1,5 @@
 class Solution {
     public int search(int[] nums, int target) {
-        
         int l = 0;
         int r = nums.length - 1;
         int mid;
@@ -12,6 +11,7 @@ class Solution {
         if (nums.length == 1)
             return nums[0] == target ? 0 : -1;
 
+        // find pivot index
         if (nums[0] < nums[nums.length - 1])
             pivot = 0;
         else {
@@ -30,6 +30,7 @@ class Solution {
             }    
         }
 
+        // decide which part to search
         if (pivot != 0) {
             if (nums[0] < target) {
                 l = 0;
@@ -44,7 +45,8 @@ class Solution {
             l = 0;
             r = nums.length - 1;
         }
-            
+        
+        // search for the target
         while (l <= r) {
             mid = l + (r - l) / 2;
             
