@@ -14,27 +14,17 @@
  * }
  */
 class Solution {
-    int res = 0;
     public int sumNumbers(TreeNode root) {
-        dfs(root, 0);
-        return res;
+        return dfs(root, 0);
     }
     
-    private void dfs(TreeNode node, int sum) {
+    private int dfs(TreeNode node, int res) {
         if (node == null)
-            return;
+            return 0;
         
-        sum = sum * 10 + node.val;
+        if (node.left == null && node.right == null)
+            return res * 10 + node.val;
         
-        if (node.left == null && node.right == null) {
-            res += sum;
-        }
-        else {
-            dfs(node.left, sum);
-            dfs(node.right, sum);
-        }
-        
-        sum -= node.val;
-        sum /= 10;
+        return dfs(node.left, res * 10 + node.val) + dfs(node.right, res * 10 + node.val);
     }
 }
