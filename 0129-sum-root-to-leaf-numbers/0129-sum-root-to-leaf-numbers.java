@@ -14,25 +14,24 @@
  * }
  */
 class Solution {
+    int res = 0;
     public int sumNumbers(TreeNode root) {
-        List<Integer> res = new ArrayList<>();
-        res.add(0);
-        dfs(root, res, 0);
-        return res.get(0);
+        dfs(root, 0);
+        return res;
     }
     
-    private void dfs(TreeNode node, List<Integer> res, int sum) {
+    private void dfs(TreeNode node, int sum) {
         if (node == null)
             return;
         
-        sum =  sum * 10 + node.val;
+        sum = sum * 10 + node.val;
         
         if (node.left == null && node.right == null) {
-            res.add(0, sum + res.get(0));
+            res += sum;
         }
         else {
-            dfs(node.left, res, sum);
-            dfs(node.right, res, sum);
+            dfs(node.left, sum);
+            dfs(node.right, sum);
         }
         
         sum -= node.val;
