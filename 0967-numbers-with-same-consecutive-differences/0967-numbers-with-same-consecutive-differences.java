@@ -22,11 +22,7 @@ class Solution {
         }
         
         for (int j = 0; j <= 9; j++) {
-            if (j - i == k) {
-                dfs(j, n - 1, k, list, nums + String.valueOf(j));
-                dfs(j, n - 1, -k, list, nums + String.valueOf(j));
-            }
-            if (j - i == -k) {
+            if (j - i == k || i - j == k) {
                 dfs(j, n - 1, k, list, nums + String.valueOf(j));
                 dfs(j, n - 1, -k, list, nums + String.valueOf(j));
             }
