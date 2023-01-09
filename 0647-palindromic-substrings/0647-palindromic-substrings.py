@@ -20,7 +20,7 @@ class Solution:
         
         res = 0
         for i in range(len(s)):
-            for j in range(i, len(s)):
+            for j in range(len(s) - 1, i - 1, -1):
                 if dp(i, j):
                     res += 1
                     
