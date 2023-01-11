@@ -9,9 +9,7 @@ class Solution:
             for j in range(i, len(s)):
                 memo[i][j] = s[i] == s[j] and (j - i + 1 <= 3 or memo[i + 1][j - 1])
                 if memo[i][j]:
-                    if j - i + 1 <= maxLen:
-                        continue
-                    else:
+                    if j - i + 1 > maxLen:
                         res = s[i : j + 1]
                         maxLen = j - i + 1
         return res
