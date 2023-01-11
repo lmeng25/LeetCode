@@ -2,12 +2,9 @@ class Solution:
     def countSubstrings(self, s: str) -> int:
         memo = {}
         def dp(i, j):
-            if i == j:
-                memo[(i, j)] = True
-                return True
-            if i + 1 == j and s[i] == s[j]:
-                memo[(i, j)] = True
-                return True
+            if j - i + 1 <= 3:
+                return s[i] == s[j]
+            
             if (i, j) in memo:
                 return memo[(i, j)]
             else:
