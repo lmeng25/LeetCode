@@ -6,7 +6,6 @@ class Solution:
                 return True
             if i not in memo:
                 for j in range(i + 1, len(s) + 1):
-                    temp = s[i:j]
                     if s[i:j] in wordDict:
                         if dp(j):
                             memo[i] = True
