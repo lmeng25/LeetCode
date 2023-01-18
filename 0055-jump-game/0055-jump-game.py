@@ -9,8 +9,7 @@ class Solution:
             for j in range(i + 1, i + nums[i] + 1):
                 if j not in memo:
                     if jump(j):
-                        memo[j] = True
-                        return True
+                        memo[i] = True
             if i not in memo:
                 memo[i] = False
             return memo[i]
