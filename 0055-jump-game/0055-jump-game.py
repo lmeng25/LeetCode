@@ -2,10 +2,10 @@ class Solution:
     def canJump(self, nums: List[int]) -> bool:
         memo = {}
         def jump(i):
+            if nums[i] + i >= len(nums) - 1:
+                return True
             if i >= len(nums) - 1:
                 return True
-            # if nums[i] == 0:
-            #     return False
             for j in range(i + 1, i + nums[i] + 1):
                 if j not in memo:
                     if jump(j):
