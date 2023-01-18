@@ -10,6 +10,7 @@ class Solution:
                 if j not in memo:
                     if jump(j):
                         memo[i] = True
+                        memo[j] = True
             if i not in memo:
                 memo[i] = False
             return memo[i]
