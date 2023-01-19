@@ -1,13 +1,13 @@
-from queue import PriorityQueue
+import heapq
 class Solution:
     def minMeetingRooms(self, intervals: List[List[int]]) -> int:
         intervals.sort()
-        rooms = PriorityQueue()
+        rooms = []
         
         for meeting in intervals:
-            if rooms.qsize() != 0:
-                if rooms.queue[0] <= meeting[0]:
-                    rooms.get()
-            rooms.put(meeting[1], meeting[1])
+            if len(rooms) != 0:
+                if rooms[0] <= meeting[0]:
+                    heapq.heappop(rooms)
+            heapq.heappush(rooms, meeting[1])
         
-        return rooms.qsize()
+        return len(rooms)
