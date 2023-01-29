@@ -7,25 +7,10 @@
 
 class Solution:
     def lowestCommonAncestor(self, root: 'TreeNode', p: 'TreeNode', q: 'TreeNode') -> 'TreeNode':
-        def findAncestor(root, target, list):
-            if root == None:
-                return False
-            if root.val == target.val:
-                list.append(root)
-                return True
-            if findAncestor(root.left, target, list) or findAncestor(root.right, target, list):
-                list.append(root)
-                return True
-            return False
-            
-        ansP = []
-        ansQ = []
-        
-        findAncestor(root, p, ansP)
-        findAncestor(root, q, ansQ)
-        
-        for node in ansP:
-            for node2 in ansQ:
-                if node == node2:
-                    return node
+        if root.val > p.val and root.val > q.val:
+            return self.lowestCommonAncestor(root.left, p, q)
+        elif root.val < p.val and root.val < q.val:
+            return self.lowestCommonAncestor(root.right, p, q)
+        else:
+            return root
         
