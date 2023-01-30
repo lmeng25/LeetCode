@@ -14,7 +14,7 @@ class Solution:
                 return 0
             leftGain = max(maxContribute(node.left), 0)
             rightGain = max(maxContribute(node.right), 0)
-            res = max(res, leftGain + node.val, rightGain + node.val, leftGain + node.val + rightGain)
+            res = max(res, leftGain + node.val + rightGain)
             return max(leftGain + node.val, rightGain + node.val)
         
         maxContribute(root)
