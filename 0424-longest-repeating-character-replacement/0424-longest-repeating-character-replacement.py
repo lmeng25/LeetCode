@@ -16,10 +16,7 @@ class Solution:
             length = r - l + 1
             need_replace = length - max_count
             
-            if need_replace < k:
-                res = max(res, length)
-                r += 1
-            elif need_replace == k:
+            if need_replace <= k:
                 res = max(res, length)
                 r += 1
             else:
