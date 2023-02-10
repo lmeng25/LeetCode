@@ -6,13 +6,14 @@ class Solution:
         
         hmap = {}
         hmap[s[0]] = 1
+        max_count = 1
         
         while r < len(s):
             if s[r] not in hmap:
                 hmap[s[r]] = 1
             else:
                 hmap[s[r]] += 1
-            max_count = max(hmap.values())
+            max_count = max(max_count, hmap[s[r]])
             length = r - l + 1
             need_replace = length - max_count
             
