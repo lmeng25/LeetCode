@@ -1,18 +1,16 @@
 class Solution:
     def longestConsecutive(self, nums: List[int]) -> int:
         res = 0
-        heapq.heapify(nums)
+        hashset = set(nums)
         
-        while len(nums) != 0:
-            temp = heapq.heappop(nums)
-            length = 1
-            while len(nums) != 0:
-                if nums[0] - temp > 1:
-                    break
-                if nums[0] - temp == 1:
-                    length += 1
-                temp = heapq.heappop(nums)
-            res = max(res, length)
+        for n in hashset:
+            if n - 1 not in hashset:
+                curr = n
+                count = 1
+                while curr + 1 in hashset:
+                    curr += 1
+                    count += 1
+                res = max(count, res)
         
         return res
             
