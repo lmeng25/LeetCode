@@ -9,23 +9,17 @@ class Node:
 class Solution:
     def cloneGraph(self, node: 'Node') -> 'Node':
         visited = {}
-        
-        def dfs(node, visited):
+        def dfs(node):
             if not node:
                 return None
-
-            val = node.val
-            if val in visited:
-                return visited[val]
-            
-            copy = Node(val)
-            visited[val] = copy
-                
+            if node.val in visited:
+                return visited[node.val]
+            copy = Node(node.val, [])
+            visited[node.val] = copy
             if node.neighbors:
-                copy.neighbors = []
-                for neighbor in node.neighbors:
-                    copy.neighbors.append(dfs(neighbor, visited))
-            
+                for n in node.neighbors:
+                    copy.neighbors.append(dfs(n))
             return copy
         
-        return dfs(node, visited)
+        return dfs(node)
+            
