@@ -1,21 +1,18 @@
 class Solution:
     def numDecodings(self, s: str) -> int:
-        memo = {}
-        def dp(i):
-            if i == len(s):
-                return 1
-            if s[i] == '0':
-                return 0
-            if i == len(s) - 1:
-                return 1
-            
-            if i not in memo:
-                if int(s[i:i+2]) <= 26:
-                    memo[i] = dp(i + 1) + dp(i + 2)
-                else:
-                    memo[i] = dp(i + 1)
-            
-            return memo[i]
+        if s[0] == '0':
+            return 0
+        if len(s) == 1:
+            return 1
         
-        return dp(0)
-                
+        dp = [0 for _ in range(len(s) + 1)]
+        dp[0] = 1
+        dp[1] = 1
+        
+        for i in range(2, len(dp)):
+            if s[i - 1] != '0':
+                dp[i] = dp[i - 1]
+            if int(s[i - 2 : i]) <= 26 and int(s[i - 2 : i]) >= 10:
+                dp[i] += dp[i - 2]
+        
+        return dp[-1]
