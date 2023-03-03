@@ -1,22 +1,31 @@
 class Solution:
     def countSubstrings(self, s: str) -> int:
-        memo = {}
-        def dp(i, j):
-            if (i, j) not in memo:
-                if j - i + 1 <= 3:
-                    memo[(i, j)] = s[i] == s[j]     
-                else:
-                    if s[i] != s[j]:
-                        memo[(i, j)] = False
-                        return False
-                    else:
-                        memo[(i, j)] = dp(i + 1, j - 1)
-            return memo[(i, j)]
-        
         res = 0
-        for i in range(len(s) - 1, -1, -1):
-            for j in range(i, len(s)):
-                if dp(i, j):
+        
+        i = 0
+        while i < len(s):
+            # odd length
+            k = i
+            j = i + 1
+            while k >= 0 and j < len(s):
+                if s[k] == s[j]:
                     res += 1
-                    
+                    k -= 1
+                    j += 1
+                else:
+                    break
+
+            # even length
+            k = i
+            j = i
+            while k >= 0 and j < len(s):
+                if s[k] == s[j]:
+                    res += 1
+                    k -= 1
+                    j += 1
+                else:
+                    break
+
+            i += 1
+
         return res
