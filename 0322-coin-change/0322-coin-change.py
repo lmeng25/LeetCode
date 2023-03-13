@@ -5,9 +5,7 @@ class Solution:
         
         for i in range(1, amount + 1):
             for c in coins:
-                if c <= i:
-                    dp[i] = min(dp[i], 1 + dp[i - c])
+                if i >= c:
+                    dp[i] = min(dp[i], dp[i - c] + 1)
         
-        if dp[-1] == inf:
-            return -1
-        return dp[-1]
+        return dp[-1] if dp[-1] != inf else -1
