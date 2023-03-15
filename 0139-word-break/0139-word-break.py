@@ -5,7 +5,7 @@ class Solution:
         
         for i in range(len(s) - 1, -1, -1):
             for word in wordDict:
-                if (i + len(word)) <= len(s) and s[i : i + len(word)] in wordDict and dp[i + len(word)] == 1:
+                if (i + len(word)) <= len(s) and s[i : i + len(word)] == word and dp[i + len(word)] == 1:
                     dp[i] = 1
                     break;
             
