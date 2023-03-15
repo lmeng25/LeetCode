@@ -5,7 +5,7 @@ class Solution:
         
         for i in range(1, len(dp)):
             for j in range(i):
-                if s[j : i] in wordDict and dp[j]:
+                if dp[j] and s[j : i] in wordDict:
                     dp[i] = 1
                     break
         
