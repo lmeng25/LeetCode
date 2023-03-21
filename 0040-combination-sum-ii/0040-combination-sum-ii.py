@@ -6,7 +6,7 @@ class Solution:
         
         def dfs(i, currSum, currList):
             nonlocal lastNum
-            if currSum == target and currList not in res:
+            if currSum == target:
                 res.append(list(currList))
             if currSum > target:
                 return
