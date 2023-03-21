@@ -12,8 +12,6 @@ class Solution:
                 tPerm.append(j)
                 tArr.remove(j)
                 dfs(tPerm, tArr)
-                tPerm.pop()
-                tArr.append(j)
         
         dfs([], nums)
         return res
