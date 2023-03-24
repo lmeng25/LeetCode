@@ -16,6 +16,7 @@ class Solution:
         def dfs(i, comb):
             if len(comb) == len(digits):
                 res.append(comb)
+                return
             for j in range(i, len(digits)):
                 currLetters = letters[digits[j]]
                 for k in range(len(currLetters)):
