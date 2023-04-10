@@ -1,11 +1,20 @@
 class Solution:
     def canJump(self, nums: List[int]) -> bool:
-        distance = 1
-        for i in range(len(nums) - 2, -1, -1):
-            if nums[i] < distance:
-                distance += 1
-            else:
-                distance = 1
-            
-        return distance == 1
-                
+        if len(nums) == 1:
+            return True
+        
+        l = 0
+        r = 0
+        
+        while r < len(nums):
+            if l == 0:
+                r = nums[l] + l
+            temp = r
+            for i in range(l, r + 1):
+                r = max(r, nums[i] + i)
+                if r >= len(nums) - 1:
+                    return True
+            l = temp
+            if l == r and nums[l] == 0:
+                return False
+            l += 1
