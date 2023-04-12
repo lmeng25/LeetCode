@@ -3,13 +3,13 @@ class Solution:
         if sum(gas) < sum(cost):
             return -1
         
-        total = 0
+        remain_gas = 0
         res = 0
         for i in range(len(gas)):
-            if gas[i] - cost[i] + total < 0:
-                total = 0
+            diff = gas[i] - cost[i]
+            if remain_gas + diff < 0:
+                remain_gas = 0
                 res = i + 1
             else:
-                total += gas[i] - cost[i]
-        
+                remain_gas += diff
         return res
